@@ -6,7 +6,6 @@ This application automates the process of tracking a website's search engine ran
 
 
 ## Table of Contents 
----
 1. [Prerequisites](#prerequisites) 
 2. [Setup](#setup)
 3. [Design](#design) 
@@ -16,7 +15,6 @@ This application automates the process of tracking a website's search engine ran
 
 
 ## Prerequisites 
----
 - Microsoft Visual Studio 2022
 - SQL Express
 - .NET SDK (version 8.0) 
@@ -24,7 +22,6 @@ This application automates the process of tracking a website's search engine ran
 
 
 ## Setup
----
 1. Open the solution file (`.sln`) in Visual Studio.
 2. Navigate to `SearchRankChecker.Api\appsettings.Development.json` to observe the connection string (`Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`). `SearchRankChecker.Api` uses a database named `SearchRankCheckerDb`. 
 3. Ensure 2 projects (`SearchRankChecker.Api` and `SearchRankChecker.Client`) are configured to start.
@@ -38,7 +35,6 @@ This application automates the process of tracking a website's search engine ran
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Design
----
 ### API
 The backend API is built using **ASP.NET Core 8.0** and **Entity Framework Core**, leveraging a **SQL Express** database. It has 3 important layers which are Presentation Layer (API Controllers), Infrastructure Layer and Application Layer. 
 
@@ -52,7 +48,6 @@ Communication between the SPA and the API is handled via an API client, which is
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
----
 ### Search
 Enter search term, targeted URL and intended search engine. Click a button `Go`, result would appear on the right side of the page to show all found page results with ranking number.
 
@@ -68,7 +63,6 @@ The search results table supports filtering, sorting and pagination.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Testing
----
 - Open the Test Explorer in Visual Studio:
     - Go to **Test** > **Test Explorer**.
 - Run all tests:
@@ -78,16 +72,14 @@ The search results table supports filtering, sorting and pagination.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Troubleshooting
----
 - Verify that the connection string in `SearchRankCheck.Api\appsettings.Development.json` is correctly configured. The connection string is `Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`.
 - Refer to API log files (`log-YYYMMDD.txt`) within the project folder `SearchRankCheck.Api` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contact
----
 Han Chee - [@hancheester](https://x.com/hancheester) - hanchee@codecultivation.com
 
-Project Link: https://github.com/hancheester/BlazorCore.GoogleMap
+Project Link: https://github.com/hancheester/SearchRankChecker
 
 <p align="right">(<a href="#top">back to top</a>)</p>
