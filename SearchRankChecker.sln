@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRankChecker.Client", "SearchRankChecker.Client\SearchRankChecker.Client.csproj", "{EBB1F2AD-467B-4476-B7C7-EDE2D8C841A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRankChecker.Application", "SearchRankChecker.Application\SearchRankChecker.Application.csproj", "{FDA2FFB0-C8ED-43EF-91C3-AA9676CF748B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRankChecker.Infrastructure", "SearchRankChecker.Infrastructure\SearchRankChecker.Infrastructure.csproj", "{A0558469-E24B-40E3-B265-06858BBD4C31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRankChecker.Api", "SearchRankChecker.Api\SearchRankChecker.Api.csproj", "{0A7D3546-9AF5-4646-AA58-7980C9B3965F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D343C18A-B6E7-4A06-BEE9-33E8654838BC}"
+	ProjectSection(SolutionItems) = preProject
+		InitDb.sql = InitDb.sql
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchRankChecker.Api.Tests", "SearchRankChecker.Api.Tests\SearchRankChecker.Api.Tests.csproj", "{7A03D8E2-9968-44E9-8E4A-7050180D5913}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB1F2AD-467B-4476-B7C7-EDE2D8C841A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB1F2AD-467B-4476-B7C7-EDE2D8C841A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB1F2AD-467B-4476-B7C7-EDE2D8C841A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB1F2AD-467B-4476-B7C7-EDE2D8C841A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA2FFB0-C8ED-43EF-91C3-AA9676CF748B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA2FFB0-C8ED-43EF-91C3-AA9676CF748B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA2FFB0-C8ED-43EF-91C3-AA9676CF748B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA2FFB0-C8ED-43EF-91C3-AA9676CF748B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0558469-E24B-40E3-B265-06858BBD4C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0558469-E24B-40E3-B265-06858BBD4C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0558469-E24B-40E3-B265-06858BBD4C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0558469-E24B-40E3-B265-06858BBD4C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7D3546-9AF5-4646-AA58-7980C9B3965F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7D3546-9AF5-4646-AA58-7980C9B3965F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7D3546-9AF5-4646-AA58-7980C9B3965F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7D3546-9AF5-4646-AA58-7980C9B3965F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A03D8E2-9968-44E9-8E4A-7050180D5913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A03D8E2-9968-44E9-8E4A-7050180D5913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A03D8E2-9968-44E9-8E4A-7050180D5913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A03D8E2-9968-44E9-8E4A-7050180D5913}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25C28541-D77F-4FE4-A146-32C45D5C8629}
+	EndGlobalSection
+EndGlobal

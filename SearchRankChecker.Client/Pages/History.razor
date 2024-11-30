@@ -1,0 +1,111 @@
+﻿@page "/history"
+@using SearchRankChecker.Application.Search.Dto
+
+<style>
+    .mud-table-container {
+        overflow: auto;
+    }
+</style>
+
+<PageTitle>History</PageTitle>
+<MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">History</MudText>
+
+<MudTable Hover="true" Elevation="25" ServerData="ServerReloadAsync" Loading="@_loading" @ref="_table">
+    <ToolBarContent>
+        <MudTextField T="string" ShrinkLabel Label="Search Term" @bind-Value="@_searchTerm" Variant="Variant.Text" Class="mr-2"></MudTextField>
+        <MudTextField T="string" ShrinkLabel Label="URL" @bind-Value="@_targetUrl" Variant="Variant.Text" Class="mr-2"></MudTextField>
+        <MudSelect @bind-Value="_searchEngine"
+                   Class="mr-2"
+                   Variant="Variant.Text"
+                   Style="width: 130px;"
+                   Label="Search Engine">
+            <MudSelectItem Value="@("Google")">Google</MudSelectItem>
+            <MudSelectItem Value="@("Bing")">Bing</MudSelectItem>
+        </MudSelect>        
+        <MudDateRangePicker Label="Date Range" PickerVariant="PickerVariant.Dialog" Class="mr-2" Clearable="true" @bind-DateRange="_dateRange" />
+        <MudSpacer/>
+        <MudButton Variant="Variant.Filled" DropShadow="false" Color="Color.Primary" OnClick="SearchAsync" Disabled="@(_searching || _loading)">
+            @if (_searching)
+            {
+                <MudText>Searching</MudText>
+            }
+            else
+            {
+                <MudText>Search</MudText>
+            }
+        </MudButton>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortLabel="SearchTerm" T="SearchHistoryDto"><b>Search Term</b></MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="TargetUrl" T="SearchHistoryDto"><b>URL</b></MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="SearchEngine" T="SearchHistoryDto"><b>Search Engine</b></MudTableSortLabel></MudTh>
+        <MudTh><b>Rankings</b></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="SearchDate" T="SearchHistoryDto"><b>Search Date</b></MudTableSortLabel></MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd>
+            <MudHighlighter Text="@context.SearchTerm" HighlightedText="@_searchTerm" />
+        </MudTd>
+        <MudTd>
+            <MudHighlighter Text="@context.TargetUrl" HighlightedText="@_targetUrl" />
+        </MudTd>
+        <MudTd>
+            @context.SearchEngine
+        </MudTd>
+        <MudTd>
+            @context.Rankings
+        </MudTd>
+        <MudTd>
+            @context.SearchDate.ToString("dd MMM yyyy HH:mm")
+        </MudTd>
+        <MudTd>
+            <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+                <MudButton OnClick="@(() => context.ShowEntries = !context.ShowEntries)">
+                    @((context.ShowEntries == true) ? "Hide" : "Show")
+                </MudButton>
+                <MudButton OnClick="@(() => RepeatSearchAsync(context.SearchTerm, context.TargetUrl, context.SearchEngine))">
+                    Repeat
+                </MudButton>
+                <MudButton OnClick="@(() => DeleteAsync(context.Id))">
+                    Delete            
+                </MudButton>
+            </MudButtonGroup>
+        </MudTd>
+    </RowTemplate>
+    <ChildRowContent>
+        @if (context.ShowEntries)
+        {
+            <MudTr>
+                <td colspan="6">
+                    <MudSimpleTable Elevation="0" Dense="true" Style="overflow-x: auto;">
+                        <thead>
+                            <tr>
+                                <th><MudText Typo="Typo.subtitle2">URL</MudText></th>
+                                <th width="200px"><MudText Typo="Typo.subtitle2">Rank</MudText></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (context.SearchResultEntries != null && context.SearchResultEntries.Any())
+                            {
+                                foreach (var row in context.SearchResultEntries)
+                                {
+                                    <tr>
+                                        <td><MudLink Href="@row.Url" Typo="Typo.body2" Target="_blank" Underline="Underline.Always">@row.Url</MudLink></td>
+                                        <td>@row.Rank</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </MudSimpleTable>
+                </td>
+            </MudTr>
+        }
+    </ChildRowContent>
+    <LoadingContent>
+        <MudText>Loading...</MudText>
+    </LoadingContent>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>

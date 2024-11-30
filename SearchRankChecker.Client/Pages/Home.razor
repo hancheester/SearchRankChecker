@@ -1,0 +1,81 @@
+﻿@page "/"
+
+<PageTitle>Search</PageTitle>
+<MudText Typo="Typo.h3" Align="Align.Center" GutterBottom="true">Search</MudText>
+
+<MudGrid Spacing="12">
+    <MudItem xs="4">
+        <MudForm Model="@_model" @ref="@_form" Validation="@(Validator.ValidateValue)" ValidationDelay="0">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudTextField T="string" For="@(() => _model.SearchTerm)" @bind-Value="_model.SearchTerm" Label="Search Term" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField T="string" For="@(() => _model.Url)" @bind-Value="_model.Url" Label="URL" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudSelect @bind-Value="_model.SearchEngine"
+                               For="@(() => _model.SearchEngine)"
+                               Variant="Variant.Text"
+                               Label="Search Engine">
+                        <MudSelectItem Value="@("Google")">Google</MudSelectItem>
+                        <MudSelectItem Value="@("Bing")">Bing</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" Class="d-flex justify-center">
+                    <MudButton Variant="Variant.Filled" OnClick="GoAsync" DropShadow="false" Color="Color.Primary" Disabled="@_isBusy" Size="Size.Large" Class="mt-8">
+                        @if (_isBusy)
+                        {
+                            <MudText>Searching</MudText>
+                        }
+                        else
+                        {
+                            <MudText>Go</MudText>
+                        }
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+    </MudItem>
+    <MudItem xs="8">
+        <MudSimpleTable Hover="true" Dense="true" FixedHeader="true" Elevation="0" Style="height:500px">
+            <thead>
+                <tr>
+                    <th>Page Result</th>
+                    <th width="50px">Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (_isBusy)
+                {
+                    <tr>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text"/></td>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text" /></td>
+                        </tr>
+                    <tr>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text" /></td>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text" /></td>
+                    </tr>
+                    <tr>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text" /></td>
+                        <td><MudSkeleton SkeletonType="SkeletonType.Text" /></td>
+                    </tr>
+                }
+                else
+                {
+                    @if (_searchResult != null && _searchResult.Results != null)
+                    {
+                        foreach (var row in _searchResult.Results)
+                        {
+                            <tr>
+                                <td><MudLink Href="@row.Url" Typo="Typo.body2" Target="_blank" Underline="Underline.Always">@row.Url</MudLink></td>
+                                <td>@row.Rank</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </MudSimpleTable>
+    </MudItem>
+</MudGrid>
+
