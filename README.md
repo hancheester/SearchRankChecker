@@ -25,10 +25,11 @@ This application automates the process of tracking a website's search engine ran
 1. Open the solution file (`.sln`) in Visual Studio.
 2. Navigate to `SearchRankChecker.Api\appsettings.Development.json` to observe the connection string (`Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`). `SearchRankChecker.Api` uses a database named `SearchRankCheckerDb`. 
 3. Ensure 2 projects (`SearchRankChecker.Api` and `SearchRankChecker.Client`) are configured to start.
-4. Press `F5` to run the solution.
-5. The database `SearchRankCheckerDb` would be automatically created.
+   ![image](https://github.com/user-attachments/assets/c906a65e-02c3-4a20-ba94-d0b27de42c87)
+5. Press `F5` to run the solution.
+6. The database `SearchRankCheckerDb` would be automatically created.
 	- Optionally, database can be manually created by executing `InitDb.sql` in SSMS (Microsoft SQL Server Management Studio). The file could be found within the root folder of the project.
-6. 2 browser windows would appear during the run.
+7. 2 browser windows would appear during the run.
 	- SPA (https://localhost:7094/)
 	- API (https://localhost:7225/swagger) - for testing purpose
 
@@ -49,14 +50,23 @@ Communication between the SPA and the API is handled via an API client, which is
 
 ## Usage
 ### Search
-Enter search term, targeted URL and intended search engine. Click a button `Go`, result would appear on the right side of the page to show all found page results with ranking number.
+
+![image](https://github.com/user-attachments/assets/3fa92714-6637-4c1c-9215-f7f9e342424e)
+
+Enter search term, targeted URL and intended search engine. Click a button `Go`, result would appear on the right side of the page to show all found page results with ranking number. Note that each result has a link which users can go and check the page.
 
 ### History
-Start by clicking a button `Search` to show all previous search results. Each row has 3 action buttons. 
+
+![image](https://github.com/user-attachments/assets/289f3438-9cdb-4ce3-92c8-4025c24e664c)
+
+Start by clicking a button `Search` to show all previous search results. 
+Each row has 3 action buttons. 
 
 Button `Show` is to display page results with ranking number. 
-Button `Repeat` is to go back to Search page and search again using the same search term, URL and search engine for better user experience. 
-Button `Delete` to delete the row from database.
+
+Button `Repeat` is to go back to Search page and perform the search again using the same search term, URL and search engine for better user experience. 
+
+Button `Delete` is to delete the row from database.
 
 The search results table supports filtering, sorting and pagination.
 
