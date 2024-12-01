@@ -1,41 +1,29 @@
-USE [master]
+-- Create the database
+CREATE DATABASE SearchRankCheckerDb3;
 GO
 
-CREATE DATABASE [SearchRankCheckerDb]
+-- Use the new database
+USE SearchRankCheckerDb3;
 GO
 
-USE [SearchRankCheckerDb]
+-- Create the SearchHistory table
+CREATE TABLE SearchHistory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    SearchTerm NVARCHAR(MAX),
+    TargetUrl NVARCHAR(MAX),
+    SearchDate DATETIME2 NOT NULL,
+    SearchEngine NVARCHAR(MAX)
+);
 GO
 
-CREATE TABLE [dbo].[SearchHistory](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[SearchTerm] [nvarchar](max) NULL,
-	[TargetUrl] [nvarchar](max) NULL,
-	[SearchDate] [datetime2](7) NOT NULL,
-	[SearchEngine] [nvarchar](max) NULL,
- CONSTRAINT [PK_SearchHistory] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[SearchResultEntry](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[SearchHistoryId] [int] NOT NULL,
-	[Url] [nvarchar](max) NULL,
-	[Rank] [int] NOT NULL,
- CONSTRAINT [PK_SearchResultEntry] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[SearchResultEntry]  WITH CHECK ADD  CONSTRAINT [FK_SearchResultEntry_SearchHistory] FOREIGN KEY([SearchHistoryId])
-REFERENCES [dbo].[SearchHistory] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[SearchResultEntry] CHECK CONSTRAINT [FK_SearchResultEntry_SearchHistory]
+-- Create the SearchResultEntry table
+CREATE TABLE SearchResultEntry (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    SearchHistoryId INT NOT NULL,
+    Url NVARCHAR(MAX),
+    Rank INT NOT NULL,
+    CONSTRAINT FK_SearchResultEntry_SearchHistory FOREIGN KEY (SearchHistoryId)
+        REFERENCES SearchHistory(Id)
+        ON DELETE CASCADE
+);
 GO
