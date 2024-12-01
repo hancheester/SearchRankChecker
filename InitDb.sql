@@ -1,9 +1,9 @@
 -- Create the database
-CREATE DATABASE SearchRankCheckerDb3;
+CREATE DATABASE SearchRankCheckerDb;
 GO
 
 -- Use the new database
-USE SearchRankCheckerDb3;
+USE SearchRankCheckerDb;
 GO
 
 -- Create the SearchHistory table
