@@ -28,7 +28,7 @@ This application automates the process of tracking a website's search engine ran
 5. Press `F5` to run the solution.
 6. The database `SearchRankCheckerDb` would be automatically created.
 	- Optionally, database can be manually created by executing `InitDb.sql` in SSMS (Microsoft SQL Server Management Studio). The file could be found within the root folder of the project.
-7. 2 browser windows would appear during the run.
+7. Two browser windows would appear during the run.
 	- SPA (https://localhost:7094/)
 	- API (https://localhost:7225/swagger) - for testing purpose
 
@@ -87,7 +87,7 @@ The search results table supports filtering, sorting and pagination.
 
 ## Troubleshooting
 - Verify that the connection string in `SearchRankCheck.Api\appsettings.Development.json` is correctly configured. The connection string is `Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`.
-- Refer to API log files (`log-YYYMMDD.txt`) within the `SearchRankCheck.Api`'s project folder for more information.
+- Refer to log file(s) (`log-YYYMMDD.txt`) within the `SearchRankCheck.Api`'s project folder for more information.
 
 ![image](https://github.com/user-attachments/assets/acc2b818-6f25-4666-9fd2-743746e08a66)
 
