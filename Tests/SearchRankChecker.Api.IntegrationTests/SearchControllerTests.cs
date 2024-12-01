@@ -38,7 +38,7 @@ public class SearchControllerTests : IClassFixture<SearchRankCheckerApiWebApplic
             {
                 SearchEngine = searchEngines[i % 2],
                 SearchTerm = "land registry search",
-                TargetUrl = "https://www.dotnetfoundation.org/",
+                TargetUrl = "https://www.gov.uk/",
                 SearchDate = DateTime.UtcNow,
             });
         }
@@ -64,7 +64,7 @@ public class SearchControllerTests : IClassFixture<SearchRankCheckerApiWebApplic
         {
             SearchEngine = "Google",
             SearchTerm = "land registry search",
-            TargetUrl = "https://www.dotnetfoundation.org/",
+            TargetUrl = "https://www.gov.uk/",
             SearchDate = DateTime.UtcNow,
         };
         await SeedDataAsync(targetHistory);
@@ -142,7 +142,7 @@ public class SearchControllerTests : IClassFixture<SearchRankCheckerApiWebApplic
         {
             SearchEngine = "Google",
             SearchTerm = "land registry search",
-            TargetUrl = "https://www.dotnetfoundation.org/",
+            TargetUrl = "https://www.gov.uk/",
             SearchDate = DateTime.UtcNow,
         };
 
@@ -302,7 +302,7 @@ public class SearchControllerTests : IClassFixture<SearchRankCheckerApiWebApplic
         var request = new
         {
             SearchEngine = "Google",
-            SearchTerm = new string('a', 2050),
+            SearchTerm = new string('a', 2050), // Max length is 2048
             Url = "google.com",
         };
 
