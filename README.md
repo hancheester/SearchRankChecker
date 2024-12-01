@@ -96,11 +96,11 @@ Enter search term, targeted URL and intended search engine. Click a button `Go`,
 Start by clicking a button `Search` to show all previous search results. 
 Each row has 3 action buttons. 
 
-Button `Show` is to display page results with ranking number. 
+Button `SHOW` is to display page results with ranking number. 
 
-Button `Repeat` is to go back to *Search* page and automatically perform the search again using the same search term, URL and search engine for better user experience. 
+Button `REPEAT` is to go back to *Search* page and automatically perform the search again using the same search term, URL and search engine for better user experience. 
 
-Button `Delete` is to delete the entry from database.
+Button `DELETE` is to delete the entry from database.
 
 The search results table supports filtering, sorting and pagination.
 
