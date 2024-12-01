@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 ## Search Rank Checker
-This application automates the process of tracking a website's search engine ranking for specified keywords, returning the positions where the URL appears in the top 100 search results, simplifying SEO monitoring for improved sales strategy.
+This application automates the process of tracking a website's search engine ranking for specified keywords, returning the positions where the URL appears in the top 100 search results, simplifying SEO monitoring for improved exposure.
 
 
 ## Table of Contents 
