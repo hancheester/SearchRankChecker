@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 ## Search Rank Checker
-This application automates the process of tracking a website's search engine ranking for specified keywords, returning the positions where the URL appears in the top 100 search results, simplifying SEO monitoring for improved sales strategy.
+This application automates the process of tracking a website's search engine ranking for specified keywords, returning the positions where the URL appears in the top 100 search results, simplifying SEO monitoring for improved exposure.
 
 
 ## Table of Contents 
@@ -27,12 +27,45 @@ This application automates the process of tracking a website's search engine ran
    ![image](https://github.com/user-attachments/assets/c906a65e-02c3-4a20-ba94-d0b27de42c87)
 5. Press `F5` to run the solution.
 6. The database `SearchRankCheckerDb` would be automatically created.
-	- Optionally, database can be manually created by executing `InitDb.sql` in SSMS (Microsoft SQL Server Management Studio). The file could be found within the root folder of the project.
-7. Two browser windows would appear during the run.
+	- Optionally, database can be manually created by executing [`InitDb.sql`](https://github.com/hancheester/SearchRankChecker/blob/master/InitDb.sql) in SSMS (Microsoft SQL Server Management Studio). The file could be found within the root folder of the project.
+	
+ ```sql
+-- Create the database
+CREATE DATABASE SearchRankCheckerDb;
+GO
+
+-- Use the new database
+USE SearchRankCheckerDb;
+GO
+
+-- Create the SearchHistory table
+CREATE TABLE SearchHistory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    SearchTerm NVARCHAR(MAX),
+    TargetUrl NVARCHAR(MAX),
+    SearchDate DATETIME2 NOT NULL,
+    SearchEngine NVARCHAR(MAX)
+);
+GO
+
+-- Create the SearchResultEntry table
+CREATE TABLE SearchResultEntry (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    SearchHistoryId INT NOT NULL,
+    Url NVARCHAR(MAX),
+    Rank INT NOT NULL,
+    CONSTRAINT FK_SearchResultEntry_SearchHistory FOREIGN KEY (SearchHistoryId)
+        REFERENCES SearchHistory(Id)
+        ON DELETE CASCADE
+);
+GO
+```
+
+6. Two browser windows would appear during the run.
 	- SPA (https://localhost:7094/)
 	- API (https://localhost:7225/swagger) - for testing purpose
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Design
 ### API
@@ -47,7 +80,7 @@ Communication between the SPA and the API is handled via an API client, which is
 
 State management is achieved using **Fluxor**, a library that provides a **Redux-like** store for Blazor applications.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Usage
 ### Search
@@ -71,7 +104,7 @@ Button `Delete` is to delete the entry from database.
 
 The search results table supports filtering, sorting and pagination.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Testing
 - Open the Test Explorer in Visual Studio:
@@ -83,7 +116,7 @@ The search results table supports filtering, sorting and pagination.
 ![image](https://github.com/user-attachments/assets/10a389f9-5eea-4dda-9f5b-633a806fb390)
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Troubleshooting
 - Verify that the connection string in `SearchRankCheck.Api\appsettings.Development.json` is correctly configured. The connection string is `Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`.
@@ -91,11 +124,11 @@ The search results table supports filtering, sorting and pagination.
 
 ![image](https://github.com/user-attachments/assets/acc2b818-6f25-4666-9fd2-743746e08a66)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Contact
 Han Chee - [@hancheester](https://x.com/hancheester) - hanchee@codecultivation.com
 
 Project Link: https://github.com/hancheester/SearchRankChecker
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
