@@ -50,6 +50,9 @@ public class SearchController : BaseApiController<SearchController>
     [ProducesResponseType(typeof(IResult), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> DeleteSearchHistoryAsync(int id)
     {
+        if (id <= 0)
+            return BadRequest(Result.Fail("Invalid Id"));
+
         var result = await Mediator.Send(new DeleteSearchHistoryCommand { Id = id });
 
         if (result.Succeeded)

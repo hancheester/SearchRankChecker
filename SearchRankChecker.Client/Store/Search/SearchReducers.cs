@@ -10,8 +10,15 @@ public static class SearchReducers
 
     [ReducerMethod]
     public static SearchState ReduceSetSearchDtoAction(SearchState state, SetSearchDtoAction action) =>
-        new()
+        state with
         {
             Model = action.Model
+        };
+
+    [ReducerMethod]
+    public static SearchState ReduceAutoSearchAction(SearchState state, AutoSearchAction action) => 
+        state with
+        {
+            AutoSearch = true
         };
 }

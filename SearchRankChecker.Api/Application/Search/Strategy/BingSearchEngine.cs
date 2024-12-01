@@ -34,6 +34,7 @@ public class BingSearchEngine : ISearchEngine
 
         var regex = new Regex(@"<a\s+[^>]*class\s*=\s*[""']tilk[""'][^>]*\bhref\s*=\s*[""']([^""']+)[""']", RegexOptions.Compiled);
 
+        // Basically we are fetching 3 pages of search results
         var baseUri = "https://www.bing.com/search";
         var queryStrings = new[] { 1, 23, 73 }
             .Select(start => $"{baseUri}?q={HttpUtility.UrlEncode(query)}&count={_maxResults}&first={start}")

@@ -46,6 +46,8 @@ The **SPA** is developed using **Blazor WebAssembly (WASM)**. The UI is built us
 
 Communication between the SPA and the API is handled via an API client, which is also structured around the **Mediator pattern**.
 
+State management is achieved using **Fluxor**, a library that provides a **Redux-like** store for Blazor applications.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
@@ -64,9 +66,9 @@ Each row has 3 action buttons.
 
 Button `Show` is to display page results with ranking number. 
 
-Button `Repeat` is to go back to Search page and perform the search again using the same search term, URL and search engine for better user experience. 
+Button `Repeat` is to go back to *Search* page and automatically perform the search again using the same search term, URL and search engine for better user experience. 
 
-Button `Delete` is to delete the row from database.
+Button `Delete` is to delete the entry from database.
 
 The search results table supports filtering, sorting and pagination.
 
@@ -83,7 +85,7 @@ The search results table supports filtering, sorting and pagination.
 
 ## Troubleshooting
 - Verify that the connection string in `SearchRankCheck.Api\appsettings.Development.json` is correctly configured. The connection string is `Server=localhost\\SQLEXPRESS;Database=SearchRankCheckerDb;Trusted_Connection=True;MultipleActiveResultSets=true`.
-- Refer to API log files (`log-YYYMMDD.txt`) within the project folder `SearchRankCheck.Api` for more information.
+- Refer to API log files (`log-YYYMMDD.txt`) within the `SearchRankCheck.Api`'s project folder for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

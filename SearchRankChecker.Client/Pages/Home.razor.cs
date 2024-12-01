@@ -10,13 +10,19 @@ namespace SearchRankChecker.Client.Pages;
 public partial class Home
 {
     private SearchDto _model => State.Value.Model;
+    private bool _autoSearch => State.Value.AutoSearch;
     private SearchResult? _searchResult;
     private bool _isBusy;
+    private MudForm _form = new();
 
     [Inject] private IState<SearchState> State { get; set; }
     [Inject] public required SearchDtoValidator Validator { get; set; }
 
-    private MudForm _form = new();
+    protected override async Task OnInitializedAsync()
+    {
+        if (_autoSearch)
+            await GoAsync();
+    }
 
     private async Task GoAsync()
     {

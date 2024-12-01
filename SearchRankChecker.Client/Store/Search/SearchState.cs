@@ -4,9 +4,10 @@ using SearchRankChecker.Application.Search.Dto;
 namespace SearchRankChecker.Client.Store.Search;
 
 [FeatureState]
-public class SearchState
+public record SearchState
 {
     public SearchDto Model { get; init; }
+    public bool AutoSearch { get; init; }
 
     public SearchState()
     {

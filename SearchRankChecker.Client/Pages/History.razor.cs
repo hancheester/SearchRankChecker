@@ -153,6 +153,7 @@ public partial class History
                 Url = targetUrl,
                 SearchEngine = searchEngine,
             }));
+            Dispatcher.Dispatch(new AutoSearchAction());
 
             _navigationManager.NavigateTo("/");
         }

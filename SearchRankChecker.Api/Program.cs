@@ -9,6 +9,8 @@ using SearchRankChecker.Api.Infrastructure;
 using Serilog;
 using System;
 
+const string ENV_INTEGRATION_TEST = "IntegrationTest";
+
 Log.Logger = new LoggerConfiguration()
    .Enrich.FromLogContext()
    .WriteTo.File("log-.txt",
@@ -18,7 +20,7 @@ Log.Logger = new LoggerConfiguration()
                  rollOnFileSizeLimit: true,
                  flushToDiskInterval: TimeSpan.FromSeconds(1))
    .WriteTo.Console(outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] [{Level}] <{SourceContext}> {Message}{NewLine}{Exception}")
-   .CreateBootstrapLogger();
+   .CreateLogger();
 
 Log.Information("Starting up");
 
@@ -58,7 +60,10 @@ try
 
     var app = builder.Build();
 
-    app.Initialize();
+    if (!builder.Environment.IsEnvironment(ENV_INTEGRATION_TEST))
+    {
+        app.Initialize();
+    }
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -86,3 +91,5 @@ finally
     Log.Information("Shut down complete");
     Log.CloseAndFlush();
 }
+
+public partial class Program { }
