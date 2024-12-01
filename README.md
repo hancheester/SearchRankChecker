@@ -5,12 +5,12 @@ This application automates the process of tracking a website's search engine ran
 
 
 ## Table of Contents 
-1. [Prerequisites](#prerequisites) 
-2. [Setup](#setup)
-3. [Design](#design) 
-4. [Usage](#usage) 
-5. [Testing](#testing) 
-6. [Troubleshooting](#troubleshooting) 
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Design](#design)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Troubleshooting](#troubleshooting) 
 
 
 ## Prerequisites 
